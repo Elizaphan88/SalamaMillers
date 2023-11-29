@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -109,13 +110,16 @@
         </div>
     </nav>
 
-<div class="container-fluid m-0" style="background-color: yellow">
+<div class="container-fluid m-0" style="background-color: floralwhite">
     <div class="row ">
         <div class="col-md-1 pt-2 justify-content-center">
             <a href="{% url 'home' %}"><img src="{% static 'images/Salama_icon.png' %}" alt="" style="width: 40px; height: 40px; "></a>
         </div>
         <div class="col">
-            <a href="{% url 'home' %}" style="text-decoration: none; color: black"><h1>Salama Millers Limited</h1></a>
+            <a href="{% url 'home' %}" style="text-decoration: none; color: black; display: inline">
+                <h1 style="display: inline">Salama Millers Limited</h1>
+                <h2 style="display: inline; color: #000080; font-family: 'Monotype Corsiva', cursive;">making your nutritional needs our priority</h2>
+            </a>
         </div>
     </div>
 </div>
@@ -139,7 +143,7 @@
             <h4 style="color: #eeb814">Address</h4>
             <div class="container-fluid">
               <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a><br>
-              <a href=""><i class="fa fa-phone" aria-hidden="true"></i><span>Call +254714575082</span></a><br>
+              <a href=""><i class="fa fa-phone" aria-hidden="true"></i><span>+254714575082</span></a><br>
               <a href=""><i class="fa fa-envelope" aria-hidden="true"></i><span>elizaphanchege88@gmail.com</span></a><br>
             </div>
           </div>
@@ -162,8 +166,11 @@
             <h4 style="color: #eeb814">Links</h4>
             <div>
               <a href="{% url 'home' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#} Home</a><br>
-              <a href="{% url 'about' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}About</a><br>
-              <a href="{% url 'contact' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}Services</a><br>
+              <a href="{% url 'about' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}About us</a><br>
+              <a href="{% url 'register' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}Register</a><br>
+              <a href="{% url 'handlesignup' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}Sign up</a><br>
+              <a href="{% url 'handlelogin' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}Sign in</a><br>
+              <a href="{% url 'create_order' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}Create order</a><br>
               <a href="{% url 'contact' %}">{#<img src="{% static 'images/nav-bullet.png' %}" alt="">#}Contact Us</a><br>
             </div>
           </div>
@@ -187,7 +194,7 @@
         </p>
     </div>
 </div>
-
+<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
