@@ -28,10 +28,12 @@ class UserLoginForm(forms.Form):
 class Salama_OrderForm(forms.ModelForm):
      class Meta:
         model = OrderForm
-        fields = ['item', 'description', 'quantity', 'route']
-        # fields = '__all__'
+        # fields = ['item', 'description', 'quantity', 'route']
+        fields = '__all__'
 
         widgets = {
             field.name: forms.TextInput(attrs={'placeholder': f' {field.verbose_name}'})
             for field in OrderForm._meta.fields
         }
+
+

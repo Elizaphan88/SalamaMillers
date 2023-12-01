@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Update Orders</h2>
+            <br>
+            <form action="/update/{{d.id}}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Item" name="item" value="{{d.item}}" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control  mt-2" placeholder="Description" name="description" value="{{d.description}}" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control  mt-2" placeholder="Quantity" name="quantity" value="{{d.quantity}}" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control  mt-2" placeholder="Route" name="route" value="{{d.route}}" required>
+                </div>
+{#                <div class="form-group mt-2">#}
+{#                    <select id="gender" name="gender" class="form-control" required>#}
+{#                        <option selected>{{d.gender}}</option>#}
+{#                        <option value="male">Male</option>#}
+{#                        <option value="female">Female</option>#}
+{#                    </select>#}
+{#                </div>#}
+            <div class="d-grid gap-2">
+                <button class="btn btn-success mt-2" type="submit">Update</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

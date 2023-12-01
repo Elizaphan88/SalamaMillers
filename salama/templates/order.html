@@ -4,20 +4,25 @@
 
 <div class="container-fluid m-3">
     <div class="row justify-content-center">
-        <div class="col-md-4 justify-content-center" style="background-color :floralwhite">
-                {% if user.is_authenticated %}
+        <div class="col-md-3 justify-content-center" style="background-color :floralwhite">
+            {% if user.is_authenticated %}
                 <h1>Create Your Order</h1>
-                <form class="text-center justify-content-center" method="post" action="">
+                <form action="/order" method="post">
                     {% csrf_token %}
-{#                    {{ form.as_p }}#}
-                    {% for field in form %}
-                        <div>
-                            <label for="{{ field.id_for_label }}">{{ field.label }}</label><br>
-                            {{ field }}
-                        </div>
-                    {% endfor %}
-                    <div class="d-grid gap-2 pt-3 pb-3">
-                        <button class="btn btn-primary" type="submit">Place Order</button>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Item" name="item" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control  mt-2" placeholder="Description" name="description" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control  mt-2" placeholder="Quantity" name="quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control  mt-2" placeholder="Route" name="route" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success mt-2" type="submit">Make order</button>
                     </div>
                 </form>
             {% else %}

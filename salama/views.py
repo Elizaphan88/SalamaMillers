@@ -37,6 +37,11 @@ def handlesignup(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
+            # username = form.cleaned_data['username']
+            # # Check if a user with the same username already exists
+            # if User.objects.filter(username=username).exists():
+            #     messages.error(request, 'Username already exists. Please choose a different username.')
+            #     return render(request, 'customersignup.html', {'form': form})
             form.save()
             messages.success(request,
                              'Congratulations our esteemed customer!You have successfully created your Salama Millers customer account! Welcome!')
@@ -78,14 +83,40 @@ def create_order(request):
     if request.method == 'POST':
         form = Salama_OrderForm(request.POST)
         if form.is_valid():
-            order = form.save(commit=False)
-            order.user = request.user
-            order.save()
-            messages.success(request, 'Order created successfully! We shall inform you once processed. Thank you for '
-                                      'shopping with us.')
-            return redirect('home')  # Redirect to a success page after order creation
-        else:
-            messages.error(request, 'Order error! Please enter valid data.')
+            try:
+                form.save()
+                messages.success(request,
+                                 'Order created successfully! We shall inform you once processed. Thank you for '
+                                 'shopping with us.')
+                return redirect('view_orders')
+            except:
+                pass
     else:
         form = Salama_OrderForm()
     return render(request, 'order.html', {'form': form})
+
+
+def view_orders(request):
+    orders = OrderForm.objects.all()
+    return render(request, 'view_orders.html', {'form': orders})
+
+
+def edit(request, id):
+    order = OrderForm.objects.get(id=id)
+    return render(request, 'edit.html', {'order': order})
+
+
+def updateData(request, id):
+    order = OrderForm.objects.get(id=id)
+    form = Salama_OrderForm(request.POST, instance=order)
+    if form.is_valid():
+        form.save()
+        return redirect('order')
+    else:
+        return render(request, 'edit.html', {'order': order})
+
+
+def delete(request, id):
+    order = OrderForm.objects.get(id=id)
+    order.delete()
+    return redirect('order')

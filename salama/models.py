@@ -14,7 +14,6 @@ class salama_register(models.Model):
 
 
 class OrderForm(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     quantity = models.IntegerField()
@@ -22,4 +21,4 @@ class OrderForm(models.Model):
 
     class Meta:
         db_table = 'salama_order'
-        ordering = ['user', 'item', 'description', 'quantity', 'route']
+        # ordering = ['item', 'description', 'quantity', 'route']
